@@ -11,51 +11,51 @@ sbit R_Backward = P3^4;
 
 unsigned char coutern = 0, compare = 0;
 
-void L_Move_Forward()//×óÂÖÇ°½ø
+void L_Move_Forward()//å·¦è½®å‰è¿›
 {
 	L_Forward = 1;
 	L_Backward = 0;
 }
 
-void R_Move_Forward()//ÓÒÂÖÇ°½ø
+void R_Move_Forward()//å³è½®å‰è¿›
 {  
 	R_Forward = 1;
 	R_Backward = 0;
 }
 //
-void L_Move_Back()//×óÂÖºóÍË
+void L_Move_Back()//å·¦è½®åŽé€€
 {
 	L_Forward = 0;
 	L_Backward = 1;
 }
 
-void R_Move_Back()//ÓÒÂÖºóÍË
+void R_Move_Back()//å³è½®åŽé€€
 {
 	R_Forward = 0;
 	R_Backward = 1;
 }
 
-void L_Move_Stop()//×óÂÖÍ£
+void L_Move_Stop()//å·¦è½®åœ
 {
 	L_Forward = 0;
 	L_Backward = 0;
 }
 
-void R_Move_Stop()//ÓÒÂÖÍ£
+void R_Move_Stop()//å³è½®åœ
 {
 	R_Forward = 0;
 	R_Backward = 0;
 }
 
-void Timer0_Init(void)        //100Î¢Ãë@11.0592MHz
+void Timer0_Init(void)        //100å¾®ç§’@11.0592MHz
 {
-    // TMOD &= 0xF0;            //ÉèÖÃ¶¨Ê±Æ÷Ä£Ê½
-    // TMOD |= 0x01;            //ÉèÖÃ¶¨Ê±Æ÷Ä£Ê½
+    // TMOD &= 0xF0;            //è®¾ç½®å®šæ—¶å™¨æ¨¡å¼
+    // TMOD |= 0x01;            //è®¾ç½®å®šæ—¶å™¨æ¨¡å¼
     TMOD = 0x01;
-    TL0 = 0xA4;                //ÉèÖÃ¶¨Ê±³õÊ¼Öµ
-    TH0 = 0xFF;                //ÉèÖÃ¶¨Ê±³õÊ¼Öµ
-    TF0 = 0;                //Çå³ýTF0±êÖ¾
-    TR0 = 1;            //¶¨Ê±Æ÷0¿ªÊ¼¼ÆÊ±
+    TL0 = 0xA4;                //è®¾ç½®å®šæ—¶åˆå§‹å€¼
+    TH0 = 0xFF;                //è®¾ç½®å®šæ—¶åˆå§‹å€¼
+    TF0 = 0;                //æ¸…é™¤TF0æ ‡å¿—
+    TR0 = 1;            //å®šæ—¶å™¨0å¼€å§‹è®¡æ—¶
     ET0 = 1;
     EA = 1;    
     PT0=0;
@@ -65,8 +65,8 @@ void Timer0_Serve() interrupt 1
 {
   LED0 = !LED0;
 
-    TL0 = 0xA4;                //ÉèÖÃ¶¨Ê±³õÊ¼Öµ
-    TH0 = 0xFF;           //ÉèÖÃ¶¨Ê±³õÊ¼Öµ 
+    TL0 = 0xA4;                //è®¾ç½®å®šæ—¶åˆå§‹å€¼
+    TH0 = 0xFF;           //è®¾ç½®å®šæ—¶åˆå§‹å€¼ 
     compare = 10;
     coutern ++;
     if(coutern > 100)

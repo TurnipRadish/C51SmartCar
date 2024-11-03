@@ -1,53 +1,100 @@
 #include "REG52.H"
 #include "../inc/motor.h"
-// #include "../inc/dir.h"
+#include "../inc/timer.h"
+#include "../inc/tracking.h"
 
-unsigned int cnt = 0;
-unsigned int per = 50 * 100;
+sbit Start = P3 ^ 2;
 
-sbit L_D = P1 ^ 0;
-sbit ML_D = P1 ^ 1;
-sbit MR_D = P1 ^ 2;
-sbit R_D = P1 ^ 3;
+sbit LED1 = P1 ^ 4;
+sbit BEEF = P3 ^ 7;
 
-void delay(unsigned int t) { // �ӳ�t΢��
-  unsigned int i, j;
-  for(i = 0; i < t; ++i)
-    for (j = 0; j < 1000; ++j);
+unsigned int Launch = 0;
+
+void GlobalInit() { // 总初始化
+  // Timer0_Init();
+  R_Move_Stop();
+  L_Move_Stop();
+}
+
+void PlayBeef() {
+  BEEF = !BEEF;
+  DelayUs(100);
 }
 
 void main() {
-  // Timer0_Init();
+  GlobalInit();
   while (1) {
-    R_Move_Stop();
-    L_Move_Stop();
-
-    if (L_D || ML_D) {
-      R_Move_Back();
-      delay(10);
-    }else{
-      R_Move_Stop();
-      L_Move_Stop();
+    //MoveFront(500);
+    // if (!Start) {
+    //   DelayUs(50);
+    //   if (!Start) {
+    //     Launch = !Launch;
+    //     PlayBeef();
+    //   }
+    //   DelayUs(100);
+    // }
+    if (1) {
+      TrackingTick();
     }
     
-    if (R_D || MR_D) {
-      L_Move_Back();
-      delay(10);
-    }
-    else {
-      R_Move_Stop();
-      L_Move_Stop();
-    }
-   
-    // cnt++;
-    // if (cnt > 100 * 100) cnt = 0;
-    // if (cnt < per) {
-    //   LED1 = 1;
+    
+    // 若四个探头均未被遮挡
+    // if (L_D == 0 && ML_D == 0 && MR_D == 0 && R_D == 0) {
+    //   //MoveFront(200);// 直走
     //   L_Move_Back();
-    // } else {
-    //   LED1 = 0;
+    //   R_Move_Back();
+    //   DelayMs(50);
     //   L_Move_Stop();
+    //   R_Move_Stop();
+    //   DelayMs(1000);
     // }
+    
+    // if (L_D == 1 && ML_D == 0 && MR_D == 0 && R_D == 0) {
+    //   //MoveRight(100);
+    //   L_Move_Stop();
+    //   R_Move_Back();
+    // }
+    // else if (L_D == 0 && ML_D == 1 && MR_D == 0 && R_D == 0) {
+    //   //MoveRight(50);
+    //   L_Move_Stop();
+    //   R_Move_Back();
+    //   DelayMs(50);
+    //   L_Move_Stop();
+    //   R_Move_Stop();
+    //   DelayMs(1000);
+    // }
+    // else if (L_D == 1 && ML_D == 1 && MR_D == 0 && R_D == 0) {
+    //   R_Move_Forward();
+    //   L_Move_Back();
+    //   DelayMs(100);
+    //   L_Move_Stop();
+    //   R_Move_Stop();
+    //   DelayMs(1000);
+    // }
+
+    // if (L_D == 0 && ML_D == 0 && MR_D == 0 && R_D == 1 ) {
+    //   //MoveLeft(100);
+    //   R_Move_Stop();
+    //   L_Move_Back();
+    // }
+    // else if (L_D == 0 && ML_D == 0 && MR_D == 1 && R_D == 0) {
+    //   //MoveLeft(50);
+    //   R_Move_Stop();
+    //   L_Move_Back();
+    //   DelayMs(50);
+    //   L_Move_Stop();
+    //   R_Move_Stop();
+    //   DelayMs(1000);
+    // }
+    // else if (L_D == 0 && ML_D == 0 && MR_D == 1 && R_D == 1) {
+    //   L_Move_Forward();
+    //   R_Move_Back();
+    //   DelayMs(100);
+    //   L_Move_Stop();
+    //   R_Move_Stop();
+    //   DelayMs(1000);
+    // }
+    
   }
  
 }

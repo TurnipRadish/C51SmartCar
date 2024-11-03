@@ -2,11 +2,11 @@
 #define __MOTOR_H__
 
 void L_Move_Forward();
-void R_Move_Forward();//ÓÒÂÖÇ°½ø
-void L_Move_Back();//×óÂÖºóÍË
-void R_Move_Back();//ÓÒÂÖºóÍË
-void L_Move_Stop();//×óÂÖÍ£
-void R_Move_Stop();//ÓÒÂÖÍ£
+void R_Move_Forward();//å³è½®å‰è¿›
+void L_Move_Back();//å·¦è½®åé€€
+void R_Move_Back();//å³è½®åé€€
+void L_Move_Stop();//å·¦è½®åœ
+void R_Move_Stop();//å³è½®åœ
 void Timer0_Init();
 
 #endif
