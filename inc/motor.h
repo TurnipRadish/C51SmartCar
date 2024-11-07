@@ -1,12 +1,14 @@
 #ifndef __MOTOR_H__
 #define __MOTOR_H__
 
-void L_Move_Forward();
-void R_Move_Forward();//å³è½®å‰è¿›
-void L_Move_Back();//å·¦è½®åé€€
-void R_Move_Back();//å³è½®åé€€
-void L_Move_Stop();//å·¦è½®åœ
-void R_Move_Stop();//å³è½®åœ
-void Timer0_Init();
+void L_Motor_Forward();
+void R_Motor_Forward();//ÓÒÂÖÇ°½ø
+void L_Motor_Backward();//×óÂÖºóÍË
+void R_Motor_Backward();//ÓÒÂÖºóÍË
+void L_Motor_Stop();//×óÂÖÍ£
+void R_Motor_Stop();//ÓÒÂÖÍ£
+void All_Motor_Forward();
+// void All_Motor_Backward();
+// void All_Motor_Stop();
 
 #endif
