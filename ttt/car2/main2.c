@@ -73,7 +73,7 @@ void Run() {
     }
 }
 
-void main() {
+void Car2Main() {
   Timer0_Init();
   CarStop();
   while (1) {

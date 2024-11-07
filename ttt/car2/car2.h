@@ -13,4 +13,6 @@ void CarRStop();
 void CarStop();
 void CarSpeed(unsigned int l, unsigned int r);
 
+void Car2Main();
+
 #endif
