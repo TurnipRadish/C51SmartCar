@@ -1,8 +1,8 @@
 #include "REG52.H"
 #include "../inc/motor.h"
 
-sbit L_EN = P2^0;
-sbit R_EN = P2^1;
+sbit L_EN = P3^0;
+sbit R_EN = P3^1;
 
 unsigned char counter0 = 0, lspeed = 0, rspeed = 0;
 
@@ -74,7 +74,7 @@ void CarLF(unsigned int r)
   lspeed = 0;
   rspeed = r;
   R_Motor_Forward();
-  // L_Motor_Stop();
+  L_Motor_Forward();
 }
 
 void CarRF(unsigned int l)
@@ -82,7 +82,7 @@ void CarRF(unsigned int l)
   lspeed = l;
   rspeed = 0;
   L_Motor_Forward();
-  // R_Motor_Stop();
+  R_Motor_Forward();
 }
 
 void CarLB()
